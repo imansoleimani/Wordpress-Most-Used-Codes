@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Wordpress Most Used Codes by imansoleimani</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Wordpress Most Used Codes</h1>
+      <h2 class="project-tagline">The Most Used Wordpress Codes!</h2>
+      <a href="https://github.com/imansoleimani/Wordpress-Most-Used-Codes" class="btn">View on GitHub</a>
+      <a href="https://github.com/imansoleimani/Wordpress-Most-Used-Codes/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/imansoleimani/Wordpress-Most-Used-Codes/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="wordpress-most-used-codes" class="anchor" href="#wordpress-most-used-codes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Wordpress Most Used Codes</h1>
+
+<p>Here's a Usage For This Codes :</p>
+
+<p>Jump to Section :</p>
+
+<ul>
+<li><a href="#stylecss">Style.css</a></li>
+<li><a href="#menus">Menus</a></li>
+<li><a href="#post-image-url">Post Image URL</a></li>
+<li><a href="#pagination">Pagination</a></li>
+<li><a href="#widgets">Widgets</a></li>
+<li><a href="#metabox">Metabox</a></li>
+<li><a href="#theme-options">Theme Options</a></li>
+<li><a href="#extras">Extras</a></li>
+</ul>
+
+<hr>
+
+<h3>
+<a id="stylecss" class="anchor" href="#stylecss" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Style.css</h3>
+
+<p>Create a <code>style.css</code> file in your wordpress root directory to recognize it by wordpress :</p>
+
+<pre><code>Theme Name: Test Theme
+Theme URI: http://Google.com
+Description: Testing Theme For Your Wordpress Site!
+Author: Iman Soleimani
+Author URL: http://Google.com
+Wordpress: Iman Soleimani
+Tags: Complex
+Version: 1.0
+
+
+</code></pre>
+
+<h3>
+<a id="menus" class="anchor" href="#menus" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Menus</h3>
+
+<p>Use menus by adding this to your <code>header.php</code> file :</p>
+
+<pre><code>wp_nav_menu( array( 'theme_location' =&gt; 'test1-menu',
+  'container' =&gt;'',
+  'menu_class' =&gt;'',
+  'menu_id' =&gt; 'menu'
+  ));
+</code></pre>
+
+<p><em>it will create <code>ul</code> and <code>li</code> for your menu with <code>id=menu</code> attribute!</em></p>
+
+<hr>
+
+<h3>
+<a id="post-image-url" class="anchor" href="#post-image-url" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Post Image URL</h3>
+
+<p>Use it in this way :</p>
+
+<pre><code>&lt;img src="&lt;?php get_image_url(); ?&gt;" &gt;
+</code></pre>
+
+<p><em>You should use it in the loop.</em></p>
+
+<hr>
+
+<h3>
+<a id="pagination" class="anchor" href="#pagination" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pagination</h3>
+
+<p>See code below to learn using :</p>
+
+<pre><code>&lt;?php
+$this_page_id=$wp_query-&gt;post-&gt;ID;
+$args = array( 'paged' =&gt; $paged,'showposts' =&gt; 5 );
+$loop = new WP_Query( $args );
+
+while ( $loop-&gt;have_posts() ) : $loop-&gt;the_post();
+
+endwhile;
+?&gt;
+</code></pre>
+
+<hr>
+
+<h3>
+<a id="widgets" class="anchor" href="#widgets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Widgets</h3>
+
+<p>Call your widgets by adding this code in your <code>sidebar.php</code> file :</p>
+
+<pre><code>&lt;?php dynamic_sidebar( 'test1-widget' ); ?&gt;
+</code></pre>
+
+<p>Or you can check if dynamic sidebar exist then place it :</p>
+
+<pre><code>&lt;?php
+if ( !function_exists('dynamic_sidebar') ||
+!dynamic_sidebar('test1-widget') ) : 
+endif;
+?&gt;
+</code></pre>
+
+<hr>
+
+<h3>
+<a id="metabox" class="anchor" href="#metabox" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Metabox</h3>
+
+<p>Use it in your wordpress post loop :</p>
+
+<pre><code>&lt;?php
+echo get_post_meta($post-&gt;ID, 'ts_size', TRUE);
+?&gt;
+</code></pre>
+
+<p><em>See <code>Meta-box-usage.php</code> to learn how to add more metaboxes.</em></p>
+
+<p><em>Ps: Don't Forget The PREFIX</em></p>
+
+<hr>
+
+<h3>
+<a id="theme-options" class="anchor" href="#theme-options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Theme Options</h3>
+
+<p>You can use it directly wherever you want, just call it by <code>echo</code> :</p>
+
+<pre><code>&lt;?php echo $ts_cpr; ?&gt;
+</code></pre>
+
+<p><em>Ps: Don't Forget The PREFIX</em></p>
+
+<hr>
+
+<h3>
+<a id="extras" class="anchor" href="#extras" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extras</h3>
+
+<ul>
+<li>To make shortcodes work with your theme, add this line to your <code>funtions.php</code> file :</li>
+</ul>
+
+<pre><code>add_filter( 'term_description', 'do_shortcode' );
+</code></pre>
+
+<ul>
+<li>Add this to your <code>functions.php</code> if you want to remove the Wordpress Admin Bar in your member views :</li>
+</ul>
+
+<pre><code> add_action('after_setup_theme', 'remove_admin_bar');
+    function remove_admin_bar() {
+    if (!current_user_can('administrator') &amp;&amp; 
+    !is_admin()) {
+      show_admin_bar(false);
+    }
+}
+</code></pre>
+
+<h4>
+<a id="thats-it-now-you-can-solve-many-of-your-problems-simply" class="anchor" href="#thats-it-now-you-can-solve-many-of-your-problems-simply" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>That's it, Now You Can Solve Many of Your Problems Simply!</h4>
+
+<p><em>If you have any questions or other problems, Ask It...</em></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/imansoleimani/Wordpress-Most-Used-Codes">Wordpress Most Used Codes</a> is maintained by <a href="https://github.com/imansoleimani">imansoleimani</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
