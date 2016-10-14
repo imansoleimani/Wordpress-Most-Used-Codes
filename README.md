@@ -119,3 +119,6 @@ add_filter( 'term_description', 'do_shortcode' );
  	}
 }
 ```
+
+####That's it, Now You Can Solve Many of Your Problems Simply!
+*If you have any questions or other problems, Ask It...*
